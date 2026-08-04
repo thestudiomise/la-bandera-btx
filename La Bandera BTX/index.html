@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Bandera BTX — Tijuana-Style Birria | Brownsville, TX</title>
+  <meta name="description" content="Immersive bilingual website for La Bandera BTX. Experience the best Tijuana-style Birria, Cheeto Birria Bombs, Birria Ramen, and loaded Aguas Frescas in Brownsville, TX.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Syne:wght@700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="lang-en">
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Header & Navigation -->
+  <header class="navbar" id="mainNavbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" id="logoLink">
+        <img src="646629494_955984120335862_4448520377452395411_n.jpg" alt="La Bandera BTX Logo" class="logo-img">
+        <span class="logo-text">LA BANDERA<span class="text-red">BTX</span></span>
+      </a>
+      
+      <nav class="nav-links" id="desktopNav">
+        <a href="#about" class="nav-item" data-en="Our Story" data-es="La Historia">Our Story</a>
+        <a href="#menu" class="nav-item" data-en="The Lineup" data-es="El Menu">The Lineup</a>
+        <a href="menu.html" class="nav-item" data-en="Menu" data-es="Menú">Menu</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" id="langSwitcher" role="button" aria-label="Toggle Language" tabindex="0">
+          <span class="lang-opt active" id="lang-en">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-opt" id="lang-es">ES</span>
+        </div>        <a href="https://www.google.com/maps/place/La+Bandera+BTX/@25.9501411,-97.4876249,17z/data=!3m2!4b1!5s0x866f9686ea229681:0x792176a7834b5847!4m6!3m5!1s0x866f972240ea84e7:0x37df80e17172181e!8m2!3d25.9501363!4d-97.48505!16s%2Fg%2F11vzp927sy?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-cta" id="navCta" data-en="Visit Us" data-es="Visítanos">Visit Us</a>
+        
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Toggle Mobile Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+ 
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav" id="mobileNavMenu">
+    <div class="mobile-nav-links">
+      <a href="#about" class="mobile-nav-item" data-en="Our Story" data-es="La Historia">Our Story</a>
+      <a href="#menu" class="mobile-nav-item" data-en="The Lineup" data-es="El Menu">The Lineup</a>
+      <a href="menu.html" class="mobile-nav-item" data-en="Menu" data-es="Menú">Menu</a>
+      <a href="https://www.google.com/maps/place/La+Bandera+BTX/@25.9501411,-97.4876249,17z/data=!3m2!4b1!5s0x866f9686ea229681:0x792176a7834b5847!4m6!3m5!1s0x866f972240ea84e7:0x37df80e17172181e!8m2!3d25.9501363!4d-97.48505!16s%2Fg%2F11vzp927sy?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="mobile-btn-cta" data-en="Visit Us" data-es="Visítanos">Visit Us</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-sec" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-badge" data-en="Original Tijuana-Style Beef Birria" data-es="Birria de Res Original Estilo Tijuana">Original Tijuana-Style Beef Birria</div>
+      <h1 class="hero-title">
+        <span class="word-reveal">LA BANDERA</span>
+        <span class="word-reveal text-red italic">BTX</span>
+      </h1>
+      <p class="hero-subtitle" data-en="Searing, juicy, slow-cooked Tijuana-style birria that redefined the RGV food scene. Crafting culinary legends in Brownsville, TX." data-es="Birria de res estilo Tijuana, jugosa y de cocción lenta que redefinió la comida en el RGV. Creando leyendas culinarias en Brownsville, TX.">
+        Searing, juicy, slow-cooked Tijuana-style birria that redefined the RGV food scene. Crafting culinary legends in Brownsville, TX.
+      </p>
+      
+      <div class="hero-buttons">
+        <a href="menu.html" class="btn-primary" id="heroMainCta" data-en="Order Online" data-es="Ordenar en Línea">Order Online</a>
+        <a href="#menu" class="btn-secondary" id="heroSecCta" data-en="Explore Menu" data-es="Explorar Menú">Explore Menu</a>
+      </div>
+    </div>
+    
+    <!-- Hero Scroll Indicator -->
+    <div class="scroll-indicator">
+      <span class="scroll-dot"></span>
+      <span class="scroll-text" data-en="Scroll to feast" data-es="Desliza para saborear">Scroll to feast</span>
+    </div>
+  </section>
+
+  <!-- Parchment Paper Scrolling Text Banner (Repeating Slogans) -->
+  <div class="parchment-ticker-container" id="tickerBanner">
+    <div class="parchment-ticker-track">
+      <div class="ticker-content">
+        <span>ESTILO TIJUANA</span> • <span class="text-red">956</span> • <span>BIRRIA DE RES</span> • <span>QUESABIRRIAS</span> • <span class="text-red">IN-HOUSE MADE</span> • <span>AGUA FRESCA</span> • <span>TACOS</span> • <span>BURRITOS</span> • 
+        <span>ESTILO TIJUANA</span> • <span class="text-red">956</span> • <span>BIRRIA DE RES</span> • <span>QUESABIRRIAS</span> • <span class="text-red">IN-HOUSE MADE</span> • <span>AGUA FRESCA</span> • <span>TACOS</span> • <span>BURRITOS</span> •
+      </div>
+      <div class="ticker-content">
+        <span>ESTILO TIJUANA</span> • <span class="text-red">956</span> • <span>BIRRIA DE RES</span> • <span>QUESABIRRIAS</span> • <span class="text-red">IN-HOUSE MADE</span> • <span>AGUA FRESCA</span> • <span>TACOS</span> • <span>BURRITOS</span> • 
+        <span>ESTILO TIJUANA</span> • <span class="text-red">956</span> • <span>BIRRIA DE RES</span> • <span>QUESABIRRIAS</span> • <span class="text-red">IN-HOUSE MADE</span> • <span>AGUA FRESCA</span> • <span>TACOS</span> • <span>BURRITOS</span> •
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section ("La Historia") -->
+  <section class="about-sec" id="about">
+    <div class="about-container">
+      <div class="about-grid">
+        <div class="about-text-col">
+          <div class="section-tag" data-en="The Roots" data-es="Las Raíces">The Roots</div>
+          <h2 class="section-title" data-en="Straight from Tijuana to the Heart of the 956" data-es="Directo de Tijuana al Corazón del 956">Straight from Tijuana to the Heart of the 956</h2>
+          
+          <p class="about-para" data-en="Established in 2021, La Bandera BTX wasn't born to blend in. We brought the raw, authentic essence of Tijuana-style beef birria to Brownsville, Texas. No shortcuts. Just pure, slow-cooked dedication, melted cheese crusts, and spice-infused consomé that makes every bite unforgettable." data-es="Establecido en 2021, La Bandera BTX no nació para pasar desapercibido. Trajimos la esencia pura y auténtica de la birria de res estilo Tijuana a Brownsville, Texas. Sin atajos. Solo dedicación pura a fuego lento, costras de queso derretido y consomé infusionado con especias que hace cada bocado inolvidable.">
+            Established in 2021, La Bandera BTX wasn't born to blend in. We brought the raw, authentic essence of Tijuana-style beef birria to Brownsville, Texas. No shortcuts. Just pure, slow-cooked dedication, melted cheese crusts, and spice-infused consomé that makes every bite unforgettable.
+          </p>
+          
+          <p class="about-para highlight" data-en="We believe birria is a craft. From our custom paper wrap to our selection of loaded signature creations, we serve visual masterpieces that taste even better than they look." data-es="Creemos que la birria es un arte. Desde nuestro papel impreso personalizado hasta nuestra selección de creaciones cargadas, servimos obras maestras visuales que saben aún mejor de lo que se ven.">
+            We believe birria is a craft. From our custom paper wrap to our selection of loaded signature creations, we serve visual masterpieces that taste even better than they look.
+          </p>
+          
+          <div class="about-stats">
+            <div class="stat-box">
+              <div class="stat-num">2021</div>
+              <div class="stat-label" data-en="Est. in Brownsville" data-es="Fundado en Brownsville">Est. in Brownsville</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">100%</div>
+              <div class="stat-label" data-en="Beef Birria Craft" data-es="Birria de Res Pura">Beef Birria Craft</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">4.8★</div>
+              <div class="stat-label" data-en="Customer Rating" data-es="Calificación Local">Customer Rating</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-img-col">
+          <div class="about-img-wrapper" id="aboutImgWrapper">
+            <img src="738368297_2120657672142922_4087099089195520105_n.jpg" alt="La Bandera BTX Food Feast spread" class="parallax-img">
+            <div class="about-img-overlay">
+              <span class="overlay-text" data-en="ESTILO TIJUANA EN BROWNSVILLE" data-es="TIJUANA STYLE IN BROWNSVILLE">ESTILO TIJUANA EN BROWNSVILLE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Horizontal scroll Menu Showcase -->
+  <section class="menu-sec" id="menu">
+    <div class="menu-intro-container">
+      <div class="section-tag text-center" data-en="The Craft" data-es="La Artesanía">The Craft</div>
+      <h2 class="section-title text-center" data-en="Our Legendary Lineup" data-es="Nuestras Creaciones Legendarias">Our Legendary Lineup</h2>
+      <p class="section-desc text-center" data-en="Click on any photo to open the interactive menu with pricing and online ordering!" data-es="¡Haz clic en cualquier foto para abrir el menú interactivo con precios y ordenar en línea!">
+        Click on any photo to open the interactive menu with pricing and online ordering!
+      </p>
+    </div>
+
+    <!-- Pinned Horizontal Scroll Section Wrapper -->
+    <div class="horizontal-scroll-container" id="horizontalScrollContainer">
+      <div class="horizontal-scroll-track" id="horizontalScrollTrack">
+        
+        <!-- Card 1: Cheeto Birria Bombs -->
+        <div class="menu-card parchment-bg">
+          <a href="menu.html?item=bombs" class="menu-card-link">
+            <div class="menu-card-img-wrapper">
+              <img src="727478929_2957612364580874_896667991912941432_n.jpg" alt="Cheeto Birria Bombs" class="menu-card-img">
+              <div class="card-badge red-badge" data-en="Viral Favorite" data-es="Favorito Viral">Viral Favorite</div>
+            </div>
+          </a>
+          <div class="menu-card-content">
+            <h3 class="menu-card-title"><a href="menu.html?item=bombs">Cheeto Birria Bombs</a></h3>
+            <p class="menu-card-desc" data-en="Crunchy, cheesy, and absolutely legendary. Shredded beef birria bombs rolled in Flamin' Hot Cheeto crumbs, fried golden, and served with a syringe of melted warm cheese and signature consomé." data-es="Crujientes, quesosas y legendarias. Esferas de birria de res empanizadas con Flamin' Hot Cheetos, fritas a la perfección, servidas con una jeringa de queso derretido caliente y consomé.">
+              Crunchy, cheesy, and absolutely legendary. Shredded beef birria bombs rolled in Flamin' Hot Cheeto crumbs, fried golden, and served with a syringe of melted warm cheese and signature consomé.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Birria Ramen -->
+        <div class="menu-card parchment-bg">
+          <a href="menu.html?item=ramen" class="menu-card-link">
+            <div class="menu-card-img-wrapper">
+              <img src="737911943_1572043114252970_4325180464686455279_n.jpg" alt="Birria Ramen" class="menu-card-img">
+              <div class="card-badge" data-en="Tijuana Fusion" data-es="Fusión Tijuana">Tijuana Fusion</div>
+            </div>
+          </a>
+          <div class="menu-card-content">
+            <h3 class="menu-card-title"><a href="menu.html?item=ramen">Birria Ramen</a></h3>
+            <p class="menu-card-desc" data-en="East meets West. Warm ramen noodles submerged in a deeply seasoned beef consomé broth, topped with massive heaps of tender beef birria, fresh onions, cilantro, and lime." data-es="El Este se encuentra con el Oeste. Fideos de ramen sumergidos en un caldo profundo de consomé de res, coronados con montículos de jugosa birria, cebolla fresca, cilantro y limón.">
+              East meets West. Warm ramen noodles submerged in a deeply seasoned beef consomé broth, topped with massive heaps of tender beef birria, fresh onions, cilantro, and lime.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Quesabirria Pizza -->
+        <div class="menu-card parchment-bg">
+          <a href="menu.html?item=pizza" class="menu-card-link">
+            <div class="menu-card-img-wrapper">
+              <img src="733127277_927649500354093_7997731577535773543_n.jpg" alt="Quesabirria Pizza" class="menu-card-img">
+              <div class="card-badge" data-en="Crowd Pleaser" data-es="Para Compartir">Crowd Pleaser</div>
+            </div>
+          </a>
+          <div class="menu-card-content">
+            <h3 class="menu-card-title"><a href="menu.html?item=pizza">Quesabirria Pizza</a></h3>
+            <p class="menu-card-desc" data-en="A giant double-decker quesabirria cut in pizza wedges. Loaded with melted mozzarella, succulent birria, fresh onions, and cilantro, topped with a massive scoop of fresh guacamole." data-es="Una quesabirria gigante de doble piso cortada en rebanadas. Rellena de queso mozzarella derretido, birria suculenta, cebolla, cilantro y coronada con guacamole fresco.">
+              A giant double-decker quesabirria cut in pizza wedges. Loaded with melted mozzarella, succulent birria, fresh onions, and cilantro, topped with a massive scoop of fresh guacamole.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4: Birria Dumplings -->
+        <div class="menu-card parchment-bg">
+          <a href="menu.html?item=dumplings" class="menu-card-link">
+            <div class="menu-card-img-wrapper">
+              <img src="738493845_1066190972746968_2864783315715297970_n.jpg" alt="Birria Dumplings" class="menu-card-img">
+              <div class="card-badge" data-en="Flavor Bomb" data-es="Bomba de Sabor">Flavor Bomb</div>
+            </div>
+          </a>
+          <div class="menu-card-content">
+            <h3 class="menu-card-title"><a href="menu.html?item=dumplings">Birria Dumplings</a></h3>
+            <p class="menu-card-desc" data-en="Steamed and seared gyoza-style dumplings packed with our juicy birria de res. Swimming in warm consomé, drizzled with homemade chili oil, sesame seeds, chopped onions, and cilantro." data-es="Dumplings estilo gyoza rellenos de nuestra jugosa birria de res. Nadando en consomé caliente, bañados con aceite de chile artesanal, ajonjolí, cebolla picada y cilantro.">
+              Steamed and seared gyoza-style dumplings packed with our juicy birria de res. Swimming in warm consomé, drizzled with homemade chili oil, sesame seeds, chopped onions, and cilantro.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5: El Gigante Burrito -->
+        <div class="menu-card parchment-bg">
+          <a href="menu.html?item=burrito" class="menu-card-link">
+            <div class="menu-card-img-wrapper">
+              <img src="739040465_1620605946068267_1212466393966597742_n.jpg" alt="El Gigante Burrito" class="menu-card-img">
+              <div class="card-badge" data-en="Huge Portions" data-es="Bien Servido">Huge Portions</div>
+            </div>
+          </a>
+          <div class="menu-card-content">
+            <h3 class="menu-card-title"><a href="menu.html?item=burrito">El Gigante Burrito</a></h3>
+            <p class="menu-card-desc" data-en="A massive flour tortilla toasted to a golden crisp. Stuffed to the brim with slow-cooked birria, melted cheese, onions, and cilantro. Served with a lime wedge and double-dip red and green salsas." data-es="Una tortilla de harina gigante tostada crujiente. Rellena al tope con birria de res, queso fundido, cebolla y cilantro. Servido con limón y nuestras salsas roja y verde.">
+              A massive flour tortilla toasted to a golden crisp. Stuffed to the brim with slow-cooked birria, melted cheese, onions, and cilantro. Served with a lime wedge and double-dip red and green salsas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 6: Loaded Aguas Frescas -->
+        <div class="menu-card parchment-bg">
+          <a href="menu.html?item=aguas" class="menu-card-link">
+            <div class="menu-card-img-wrapper">
+              <img src="738335441_1925941495459816_7700028097321800809_n.jpg" alt="Loaded Aguas Frescas" class="menu-card-img">
+              <div class="card-badge red-badge" data-en="Sweet & Spicy" data-es="Dulce y Picoso">Sweet & Spicy</div>
+            </div>
+          </a>
+          <div class="menu-card-content">
+            <h3 class="menu-card-title"><a href="menu.html?item=aguas">Loaded Aguas Frescas</a></h3>
+            <p class="menu-card-desc" data-en="Perfect heat-quenchers. Ice-cold Mango or Watermelon aguas frescas with a thick chamoy and Tajín rim, stacked high with fresh diced fruit, pineapple chunks, and a maraschino cherry." data-es="El alivio perfecto para el calor. Aguas frescas heladas de Mango o Sandía con borde espeso de chamoy y Tajín, coronadas con fruta fresca picada y una cereza.">
+              Perfect heat-quenchers. Ice-cold Mango or Watermelon aguas frescas with a thick chamoy and Tajín rim, stacked high with fresh diced fruit, pineapple chunks, and a maraschino cherry.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 7: Chilaquiles Divinos -->
+        <div class="menu-card parchment-bg">
+          <a href="menu.html?item=chilaquiles" class="menu-card-link">
+            <div class="menu-card-img-wrapper">
+              <img src="727190288_2419627958546360_2785365991798406709_n.jpg" alt="Chilaquiles Divinos" class="menu-card-img">
+              <div class="card-badge" data-en="Brunch Legend" data-es="Rey del Brunch">Brunch Legend</div>
+            </div>
+          </a>
+          <div class="menu-card-content">
+            <h3 class="menu-card-title"><a href="menu.html?item=chilaquiles">Chilaquiles Divinos</a></h3>
+            <p class="menu-card-desc" data-en="Crispy hand-cut tortilla chips drenched in rich red salsa. Topped with shredded birria de res, two perfect sunny-side-up eggs, crema, fresh cilantro, microgreens, and pickled red onions." data-es="Totopos crujientes bañados en salsa roja. Coronados con birria deshebrada, dos huevos estrellados perfectos, crema, cilantro, microgreens y cebolla morada en escabeche.">
+              Crispy hand-cut tortilla chips drenched in rich red salsa. Topped with shredded birria de res, two perfect sunny-side-up eggs, crema, fresh cilantro, microgreens, and pickled red onions.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- The Parchment Experience / Interactive Section -->
+  <section class="parchment-sec" id="parchment">
+    <div class="parchment-pattern-overlay"></div>
+    <div class="parchment-content-box">
+      <div class="section-tag" data-en="The Branding" data-es="La Marca">The Branding</div>
+      <h2 class="parchment-title" data-en="It's All in the Wrap" data-es="El Secreto Está en el Envoltura">It's All in the Wrap</h2>
+      
+      <p class="parchment-text" data-en="Our signature abstract parchment paper is a stamp of quality. Just like our food, the wrap is custom, bold, and unapologetically local. It carries the code of the 956 and the legacy of Tijuana's street food scene." data-es="Nuestro papel personalizado con diseño abstracto es un sello de calidad. Al igual que nuestra comida, la envoltura es única, audaz y orgullosamente local. Lleva el código del 956 y el legado de la comida callejera de Tijuana.">
+        Our signature abstract parchment paper is a stamp of quality. Just like our food, the wrap is custom, bold, and unapologetically local. It carries the code of the 956 and the legacy of Tijuana's street food scene.
+      </p>
+
+      <!-- Interactive Stamp Grid -->
+      <div class="interactive-stamp-area" id="stampArea">
+        <div class="stamp-instruction" data-en="Click inside the box to stamp your own La Bandera design!" data-es="¡Haz clic dentro del cuadro para estampar tu propio diseño de La Bandera!">
+          Click inside the box to stamp your own La Bandera design!
+        </div>
+        <!-- Stamped elements will appear here via JS -->
+      </div>
+      
+      <div class="stamp-actions">
+        <button class="btn-clear-stamps" id="clearStampsBtn" data-en="Clear Canvas" data-es="Limpiar Lienzo">Clear Canvas</button>
+        <button class="btn-save-stamp" id="saveStampBtn" data-en="Save Design" data-es="Guardar Diseño">Save Design</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials / Social Feedback Section -->
+  <section class="reviews-sec">
+    <div class="reviews-container">
+      <div class="section-tag text-center" data-en="Real Voices" data-es="Voces Reales">Real Voices</div>
+      <h2 class="section-title text-center" data-en="What the Locals Say" data-es="Lo Que Dice la Raza">What the Locals Say</h2>
+      
+      <div class="reviews-grid">
+        <!-- Review 1 -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-body" data-en="&ldquo;Best birria in Brownsville, hands down! The Cheeto Birria Bombs are crazy good and that cheese syringe is brilliant. Consomé is so flavorful.&rdquo;" data-es="&ldquo;¡La mejor birria de Brownsville, sin duda! Las Cheeto Birria Bombs están riquísimas y la jeringa de queso es una genialidad. El consomé tiene mucho sabor.&rdquo;">
+            &ldquo;Best birria in Brownsville, hands down! The Cheeto Birria Bombs are crazy good and that cheese syringe is brilliant. Consomé is so flavorful.&rdquo;
+          </p>
+          <div class="review-author">— Gabriel M., Local Guide</div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-body" data-en="&ldquo;The loaded watermelon agua fresca is huge and topped with fresh fruit. Paired with a quesabirria pizza, it's the perfect combo. Highly recommend.&rdquo;" data-es="&ldquo;El agua fresca de sandía loca es enorme y viene con fruta fresca. Acompañada con una quesabirria pizza, es el combo perfecto. Muy recomendado.&rdquo;">
+            &ldquo;The loaded watermelon agua fresca is huge and topped with fresh fruit. Paired with a quesabirria pizza, it's the perfect combo. Highly recommend.&rdquo;
+          </p>
+          <div class="review-author">— Samantha R., Instagram Follower</div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-body" data-en="&ldquo;Birria Dumplings are a game changer! Super juicy, nice hint of chili oil. They always pack it nicely. The atmosphere is awesome.&rdquo;" data-es="&ldquo;¡Los Birria Dumplings cambian el juego! Super jugosos, buen toque de aceite de chile. Siempre empacan todo muy bien. El ambiente es genial.&rdquo;">
+            &ldquo;Birria Dumplings are a game changer! Super juicy, nice hint of chili oil. They always pack it nicely. The atmosphere is awesome.&rdquo;
+          </p>
+          <div class="review-author">— David L., Facebook Reviewer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Locations Section -->
+  <section class="contact-sec" id="contact">
+    <div class="contact-container">
+      <div class="contact-grid">
+        
+        <!-- Info Column -->
+        <div class="contact-info-col">
+          <div class="section-tag" data-en="Locations & Hours" data-es="Sucursales y Horarios">Locations & Hours</div>
+          <h2 class="section-title" data-en="Pull Up & Feast" data-es="Cáile a Comer">Pull Up & Feast</h2>
+          
+          <div class="locations-list">
+            <div class="location-item">
+              <i data-lucide="map-pin" class="text-red"></i>
+              <div>
+                <h4 class="location-name" data-en="Main Spot / Food Truck" data-es="Punto Principal / Food Truck">Main Spot / Food Truck</h4>
+                <p class="location-address">6418 S Padre Island Hwy, Brownsville, TX 78521</p>
+              </div>
+            </div>
+            
+            <div class="location-item">
+              <i data-lucide="map-pin" class="text-red"></i>
+              <div>
+                <h4 class="location-name" data-en="Express Location" data-es="Sucursal Express">Express Location</h4>
+                <p class="location-address">2100 Ruben M Torres Blvd, Suite 2060, Brownsville, TX 78526</p>
+              </div>
+            </div>
+
+            <div class="location-item">
+              <i data-lucide="phone" class="text-red"></i>
+              <div>
+                <h4 class="location-name" data-en="Call to Order" data-es="Llamar para Ordenar">Call to Order</h4>
+                <a href="tel:9566212937" class="location-phone">(956) 621-2937</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Operating Hours Grid -->
+          <div class="hours-box">
+            <h4 class="hours-title" data-en="Weekly Schedule" data-es="Horario Semanal">Weekly Schedule</h4>
+            <div class="hours-row" id="day-mon">
+              <span class="day-name" data-en="Monday" data-es="Lunes">Monday</span>
+              <span class="day-time" data-en="Closed" data-es="Cerrado">Closed</span>
+            </div>
+            <div class="hours-row" id="day-tue">
+              <span class="day-name" data-en="Tuesday" data-es="Martes">Tuesday</span>
+              <span class="day-time">12:00 PM – 10:00 PM</span>
+            </div>
+            <div class="hours-row" id="day-wed">
+              <span class="day-name" data-en="Wednesday" data-es="Miércoles">Wednesday</span>
+              <span class="day-time">12:00 PM – 10:00 PM</span>
+            </div>
+            <div class="hours-row" id="day-thu">
+              <span class="day-name" data-en="Thursday" data-es="Jueves">Thursday</span>
+              <span class="day-time">12:00 PM – 10:00 PM</span>
+            </div>
+            <div class="hours-row" id="day-fri">
+              <span class="day-name" data-en="Friday" data-es="Viernes">Friday</span>
+              <span class="day-time">12:00 PM – 11:00 PM</span>
+            </div>
+            <div class="hours-row" id="day-sat">
+              <span class="day-name" data-en="Saturday" data-es="Sábado">Saturday</span>
+              <span class="day-time">12:00 PM – 11:00 PM</span>
+            </div>
+            <div class="hours-row" id="day-sun">
+              <span class="day-name" data-en="Sunday" data-es="Domingo">Sunday</span>
+              <span class="day-time">12:00 PM – 10:00 PM</span>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-links-container">
+            <h4 class="social-title" data-en="Follow the Flag" data-es="Sigue la Bandera">Follow the Flag</h4>
+            <div class="social-icons">
+              <a href="https://www.facebook.com/labanderabtxoficial/" target="_blank" aria-label="Facebook" class="social-link-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-custom"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/labanderabtx" target="_blank" aria-label="Instagram" class="social-link-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-custom"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.tiktok.com/@labanderabtx_thefoodtruck" target="_blank" aria-label="TikTok" class="social-link-btn">
+                <i data-lucide="music-2"></i> <!-- lucide music-2 is great for TikTok -->
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Map/Embed Column -->
+        <div class="contact-map-col">
+          <div class="map-wrapper">
+            <iframe 
+              src="https://maps.google.com/maps?q=La%20Bandera%20BTX%2C%202100%20Ruben%20M%20Torres%20Blvd%2C%20Brownsville%2C%20TX%2078526&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="La Bandera BTX Location Map">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <span class="logo-text">LA BANDERA<span class="text-red">BTX</span></span>
+        <p class="footer-tagline" data-en="ESTILO TIJUANA • BROWNSVILLE, TX" data-es="ESTILO TIJUANA • BROWNSVILLE, TX">ESTILO TIJUANA • BROWNSVILLE, TX</p>
+      </div>
+      <div class="footer-rights">
+        &copy; <span id="currentYear">2026</span> La Bandera BTX. <span data-en="All Rights Reserved." data-es="Todos los derechos reservados.">All Rights Reserved.</span>
+        <br>
+        <span class="developer-credit" data-en="Crafted with passion in the 956." data-es="Creado con pasión en el 956.">Crafted with passion in the 956.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP Core and ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
