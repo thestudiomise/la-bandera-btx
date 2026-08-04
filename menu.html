@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lineup Menu — La Bandera BTX | Brownsville, TX</title>
+  <meta name="description" content="Explore the full menu and order online from La Bandera BTX. Tijuana-style Birria, Cheeto Birria Bombs, Birria Ramen, and loaded Aguas Frescas.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Syne:wght@700;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Specific styling for the Menu page */
+    body {
+      background-color: var(--parchment-cream);
+      color: var(--parchment-text-dark);
+      background-image: url("data:image/svg+xml;utf8,<svg width='400' height='400' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' fill='%23f5f4ed'/><g transform='rotate(-30 200 200)' font-family='sans-serif' font-weight='900'><text x='50' y='50' fill='rgba(204,37,37,0.04)' font-size='28'>QUESABIRRIAS</text><text x='250' y='90' fill='rgba(24,24,27,0.04)' font-size='16'>@labanderabtx</text><text x='0' y='140' fill='rgba(24,24,27,0.03)' font-size='42'>956</text><text x='180' y='180' fill='rgba(204,37,37,0.04)' font-size='22'>BIRRIA DE RES</text><text x='30' y='240' fill='rgba(24,24,27,0.04)' font-size='24'>ESTILO TIJUANA</text><text x='260' y='270' fill='rgba(204,37,37,0.04)' font-size='32'>TACOS</text><text x='100' y='320' fill='rgba(24,24,27,0.03)' font-size='20'>BURRITOS</text><text x='-20' y='370' fill='rgba(204,37,37,0.05)' font-size='26'>IN-HOUSE MADE</text></g></svg>");
+      background-repeat: repeat;
+    }
+
+    body.no-parchment {
+      background-color: var(--black) !important;
+      color: var(--white) !important;
+      background-image: none !important;
+    }
+
+    /* Menu layout container */
+    .menu-page-sec {
+      padding: 120px 0 80px 0;
+      min-height: 100vh;
+    }
+
+    .menu-page-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .menu-page-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .menu-page-title {
+      font-size: 4rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    body.no-parchment .menu-page-title {
+      color: var(--white);
+    }
+
+    .menu-page-subtitle {
+      font-size: 1.15rem;
+      color: #52525b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    body.no-parchment .menu-page-subtitle {
+      color: var(--gray-light);
+    }
+
+    /* Back Button */
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--parchment-red);
+      margin-bottom: 1.5rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-back-home:hover {
+      transform: translateX(-5px);
+      color: var(--parchment-text-dark);
+    }
+
+    body.no-parchment .btn-back-home {
+      color: var(--red);
+    }
+    body.no-parchment .btn-back-home:hover {
+      color: var(--white);
+    }
+
+    /* Filters */
+    .menu-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .filter-btn {
+      background-color: var(--white);
+      border: 1.5px solid var(--parchment-text-dark);
+      color: var(--parchment-text-dark);
+      padding: 0.6rem 1.5rem;
+      font-family: var(--font-body);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      border-radius: 4px;
+      transition: var(--transition-fast);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--parchment-red);
+      color: var(--white);
+      border-color: var(--parchment-red);
+    }
+
+    body.no-parchment .filter-btn {
+      background-color: var(--gray-dark);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+
+    body.no-parchment .filter-btn:hover, body.no-parchment .filter-btn.active {
+      background-color: var(--red);
+      border-color: var(--red);
+    }
+
+    /* Grid layout */
+    .menu-grid-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid-list {
+        grid-template-columns: 1fr;
+      }
+      .menu-page-title {
+        font-size: 2.75rem;
+      }
+    }
+
+    .menu-item-row {
+      background-color: var(--white);
+      border: 1px solid rgba(24, 24, 27, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+      transition: var(--transition-fast);
+    }
+
+    .menu-item-row:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(204, 37, 37, 0.08);
+      border-color: var(--parchment-red);
+    }
+
+    body.no-parchment .menu-item-row {
+      background-color: var(--gray-medium);
+      border-color: rgba(255,255,255,0.05);
+    }
+    body.no-parchment .menu-item-row:hover {
+      box-shadow: 0 15px 30px rgba(230, 35, 35, 0.1);
+      border-color: var(--red);
+    }
+
+    .menu-item-img-container {
+      width: 160px;
+      height: 100%;
+      min-height: 180px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .menu-item-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .menu-item-details {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-item-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-item-name {
+      font-size: 1.35rem;
+      text-transform: uppercase;
+      color: var(--parchment-text-dark);
+      font-weight: 800;
+    }
+
+    body.no-parchment .menu-item-name {
+      color: var(--white);
+    }
+
+    .menu-item-price {
+      font-family: var(--font-headings);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--parchment-red);
+      flex-shrink: 0;
+    }
+
+    body.no-parchment .menu-item-price {
+      color: var(--red);
+    }
+
+    .menu-item-text {
+      font-size: 0.9rem;
+      color: #52525b;
+      margin-bottom: 1.25rem;
+      line-height: 1.4;
+    }
+
+    body.no-parchment .menu-item-text {
+      color: var(--gray-light);
+    }
+
+    .menu-item-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Quantity Controls */
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--parchment-text-dark);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    body.no-parchment .quantity-control {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .qty-btn {
+      background: transparent;
+      border: none;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--parchment-text-dark);
+      transition: var(--transition-fast);
+    }
+
+    .qty-btn:hover {
+      background-color: rgba(24, 24, 27, 0.05);
+    }
+
+    body.no-parchment .qty-btn {
+      color: var(--white);
+    }
+    body.no-parchment .qty-btn:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .qty-val {
+      width: 36px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--parchment-text-dark);
+    }
+
+    body.no-parchment .qty-val {
+      color: var(--white);
+    }
+
+    .btn-add-cart {
+      background-color: var(--parchment-red);
+      color: var(--white);
+      border: none;
+      padding: 0.5rem 1.25rem;
+      font-family: var(--font-body);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-add-cart:hover {
+      background-color: var(--parchment-text-dark);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    body.no-parchment .btn-add-cart {
+      background-color: var(--red);
+    }
+    body.no-parchment .btn-add-cart:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    /* Floating Cart Button */
+    .floating-cart-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: var(--parchment-red);
+      color: var(--white);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(204, 37, 37, 0.35);
+      z-index: 1000;
+      border: 2px solid var(--white);
+      transition: var(--transition-smooth);
+    }
+
+    .floating-cart-btn:hover {
+      transform: scale(1.1) translateY(-3px);
+    }
+
+    body.no-parchment .floating-cart-btn {
+      background-color: var(--red);
+      border-color: var(--black);
+      box-shadow: 0 10px 25px var(--red-glow);
+    }
+
+    .cart-count-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: var(--parchment-text-dark);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: 800;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.no-parchment .cart-count-badge {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    /* Cart Sidebar Drawer */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 420px;
+      max-width: 100%;
+      height: 100vh;
+      background-color: var(--white);
+      box-shadow: -15px 0 40px rgba(0,0,0,0.15);
+      z-index: 2000;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      color: var(--parchment-text-dark);
+    }
+
+    .cart-drawer.open {
+      transform: translateX(0);
+    }
+
+    body.no-parchment .cart-drawer {
+      background-color: var(--gray-dark);
+      color: var(--white);
+      box-shadow: -15px 0 40px rgba(0,0,0,0.6);
+      border-left: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .cart-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid rgba(24, 24, 27, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    body.no-parchment .cart-header {
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .cart-title {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .btn-close-cart {
+      background: transparent;
+      border: none;
+      color: inherit;
+    }
+
+    .cart-items-list {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      border-bottom: 1px solid rgba(24, 24, 27, 0.05);
+      padding-bottom: 1rem;
+    }
+
+    body.no-parchment .cart-item {
+      border-color: rgba(255,255,255,0.05);
+    }
+
+    .cart-item-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .cart-item-info {
+      flex-grow: 1;
+    }
+
+    .cart-item-name {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .cart-item-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .cart-item-price {
+      font-weight: 600;
+      color: var(--parchment-red);
+    }
+
+    body.no-parchment .cart-item-price {
+      color: var(--red);
+    }
+
+    .btn-remove-item {
+      color: #a1a1aa;
+      background: transparent;
+      border: none;
+      font-size: 0.8rem;
+    }
+
+    .btn-remove-item:hover {
+      color: var(--red);
+    }
+
+    .cart-summary {
+      padding: 2rem 1.5rem;
+      background-color: #faf9f5;
+      border-top: 1px solid rgba(24, 24, 27, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    body.no-parchment .cart-summary {
+      background-color: var(--gray-medium);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+
+    .summary-row.total {
+      font-size: 1.3rem;
+      font-family: var(--font-headings);
+      font-weight: 800;
+      border-top: 1px dashed rgba(24, 24, 27, 0.2);
+      padding-top: 1rem;
+    }
+
+    body.no-parchment .summary-row.total {
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .btn-checkout {
+      width: 100%;
+      background-color: var(--parchment-red);
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      transition: var(--transition-fast);
+    }
+
+    .btn-checkout:hover {
+      background-color: var(--parchment-text-dark);
+    }
+
+    body.no-parchment .btn-checkout {
+      background-color: var(--red);
+    }
+    body.no-parchment .btn-checkout:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    .checkout-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      z-index: 3000;
+      display: none;
+      align-items: flex-start; /* Align elements to the start of the scrollable overlay */
+      justify-content: center;
+      padding: 3rem 1rem; /* Generous space around the modal */
+      overflow-y: auto; /* Allow scrolling if content is taller than view height */
+    }
+
+    .checkout-box {
+      background-color: var(--white);
+      color: var(--parchment-text-dark);
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      border: 2px solid var(--parchment-text-dark);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      margin: auto; /* Centers modal vertically when it fits, allows clean scroll when tight */
+    }
+
+    body.no-parchment .checkout-box {
+      background-color: var(--gray-medium);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .checkout-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .checkout-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .checkout-label {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .checkout-input {
+      padding: 0.75rem;
+      border: 1.5px solid var(--parchment-text-dark);
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      background-color: transparent;
+      color: inherit;
+    }
+
+    body.no-parchment .checkout-input {
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .checkout-radio-group {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .checkout-radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .btn-submit-order {
+      width: 100%;
+      background-color: #25d366; /* WhatsApp Green */
+      color: var(--white);
+      border: none;
+      padding: 1rem;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      transition: var(--transition-fast);
+      margin-top: 1rem;
+    }
+
+    .btn-submit-order:hover {
+      background-color: #128c7e;
+      transform: translateY(-2px);
+    }
+
+    .btn-cancel-checkout {
+      background: transparent;
+      border: 1px solid var(--parchment-text-dark);
+      color: var(--parchment-text-dark);
+      padding: 0.75rem;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: var(--transition-fast);
+      text-align: center;
+    }
+
+    body.no-parchment .btn-cancel-checkout {
+      border-color: rgba(255,255,255,0.2);
+      color: var(--white);
+    }
+  </style>
+</head>
+<body class="lang-en">
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="custom-cursor-dot" id="customCursorDot"></div>
+
+  <!-- Header & Navigation -->
+  <header class="navbar scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="646629494_955984120335862_4448520377452395411_n.jpg" alt="La Bandera BTX Logo" class="logo-img">
+        <span class="logo-text">LA BANDERA<span class="text-red">BTX</span></span>
+      </a>
+      
+      <nav class="nav-links">
+        <a href="index.html#about" class="nav-item" data-en="Our Story" data-es="La Historia">Our Story</a>
+        <a href="index.html#menu" class="nav-item" data-en="The Lineup" data-es="El Menu">The Lineup</a>
+        <a href="menu.html" class="nav-item active" data-en="Menu" data-es="Menú">Menu</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" id="langSwitcher" role="button" aria-label="Toggle Language" tabindex="0">
+          <span class="lang-opt active" id="lang-en">EN</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-opt" id="lang-es">ES</span>
+        </div>
+
+        <a href="https://www.google.com/maps/place/La+Bandera+BTX/@25.9501411,-97.4876249,17z/data=!3m2!4b1!5s0x866f9686ea229681:0x792176a7834b5847!4m6!3m5!1s0x866f972240ea84e7:0x37df80e17172181e!8m2!3d25.9501363!4d-97.48505!16s%2Fg%2F11vzp927sy?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-cta" data-en="Visit Us" data-es="Visítanos">Visit Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Section -->
+  <main class="menu-page-sec">
+    <div class="menu-page-container">
+      
+      <a href="index.html" class="btn-back-home">
+        <i data-lucide="arrow-left"></i>
+        <span data-en="Back to Home" data-es="Regresar a Inicio">Back to Home</span>
+      </a>
+
+      <div class="menu-page-header">
+        <h1 class="menu-page-title" data-en="The Menu" data-es="El Menú">The Menu</h1>
+        <p class="menu-page-subtitle" data-en="Select your favorite Tijuana-style dishes, customize your quantities, and order online for quick pickup." data-es="Selecciona tus platillos favoritos estilo Tijuana, personaliza tus porciones y ordena en línea para recoger rápido.">
+          Select your favorite Tijuana-style dishes, customize your quantities, and order online for quick pickup.
+        </p>
+      </div>
+
+      <!-- Categories filters -->
+      <div class="menu-filters">
+        <button class="filter-btn active" data-filter="all" data-en="All Items" data-es="Todo">All Items</button>
+        <button class="filter-btn" data-filter="birria" data-en="Birria Specials" data-es="Especiales de Birria">Birria Specials</button>
+        <button class="filter-btn" data-filter="drinks" data-en="Sides & Drinks" data-es="Bebidas y Acompañamientos">Sides & Drinks</button>
+      </div>
+
+      <!-- Menu Grid list -->
+      <div class="menu-grid-list" id="menuGridList">
+        
+        <!-- Item 1 -->
+        <div class="menu-item-row" data-category="birria" id="item-bombs">
+          <div class="menu-item-img-container">
+            <img src="727478929_2957612364580874_896667991912941432_n.jpg" alt="Cheeto Birria Bombs">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="Cheeto Birria Bombs" data-es="Cheeto Birria Bombs">Cheeto Birria Bombs</h3>
+              <span class="menu-item-price">$12.99</span>
+            </div>
+            <p class="menu-item-text" data-en="Hot Cheeto breaded birria bombs, served with consomé & cheese syringe." data-es="Esferas de birria empanizadas con Hot Cheetos, consomé y jeringa de queso.">
+              Hot Cheeto breaded birria bombs, served with consomé & cheese syringe.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('bombs', -1)">-</button>
+                <span class="qty-val" id="qty-bombs">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('bombs', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('bombs', 'Cheeto Birria Bombs', 12.99, 'qty-bombs', '727478929_2957612364580874_896667991912941432_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="menu-item-row" data-category="birria" id="item-ramen">
+          <div class="menu-item-img-container">
+            <img src="737911943_1572043114252970_4325180464686455279_n.jpg" alt="Birria Ramen">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="Birria Ramen" data-es="Birria Ramen">Birria Ramen</h3>
+              <span class="menu-item-price">$11.50</span>
+            </div>
+            <p class="menu-item-text" data-en="Spiced consomé broth, ramen noodles, tender birria, onions, cilantro, and lime." data-es="Caldo de consomé, fideos de ramen, birria tierna, cebolla, cilantro y limón.">
+              Spiced consomé broth, ramen noodles, tender birria, onions, cilantro, and lime.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('ramen', -1)">-</button>
+                <span class="qty-val" id="qty-ramen">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('ramen', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('ramen', 'Birria Ramen', 11.50, 'qty-ramen', '737911943_1572043114252970_4325180464686455279_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="menu-item-row" data-category="birria" id="item-pizza">
+          <div class="menu-item-img-container">
+            <img src="733127277_927649500354093_7997731577535773543_n.jpg" alt="Quesabirria Pizza">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="Quesabirria Pizza" data-es="Quesabirria Pizza">Quesabirria Pizza</h3>
+              <span class="menu-item-price">$18.99</span>
+            </div>
+            <p class="menu-item-text" data-en="Double-decker quesabirria pizza slices, mozzarella, beef birria, fresh guacamole." data-es="Quesabirria gigante estilo pizza, queso mozzarella, birria de res, guacamole fresco.">
+              Double-decker quesabirria pizza slices, mozzarella, beef birria, fresh guacamole.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('pizza', -1)">-</button>
+                <span class="qty-val" id="qty-pizza">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('pizza', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('pizza', 'Quesabirria Pizza', 18.99, 'qty-pizza', '733127277_927649500354093_7997731577535773543_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="menu-item-row" data-category="birria" id="item-dumplings">
+          <div class="menu-item-img-container">
+            <img src="738493845_1066190972746968_2864783315715297970_n.jpg" alt="Birria Dumplings">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="Birria Dumplings" data-es="Birria Dumplings">Birria Dumplings</h3>
+              <span class="menu-item-price">$10.99</span>
+            </div>
+            <p class="menu-item-text" data-en="Juicy birria filled gyoza in warm consomé, drizzled with home chili oil." data-es="Gyoza rellena de birria de res en consomé caliente, bañada con aceite de chile.">
+              Juicy birria filled gyoza in warm consomé, drizzled with home chili oil.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('dumplings', -1)">-</button>
+                <span class="qty-val" id="qty-dumplings">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('dumplings', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('dumplings', 'Birria Dumplings', 10.99, 'qty-dumplings', '738493845_1066190972746968_2864783315715297970_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="menu-item-row" data-category="birria" id="item-burrito">
+          <div class="menu-item-img-container">
+            <img src="739040465_1620605946068267_1212466393966597742_n.jpg" alt="El Gigante Burrito">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="El Gigante Burrito" data-es="El Gigante Burrito">El Gigante Burrito</h3>
+              <span class="menu-item-price">$12.50</span>
+            </div>
+            <p class="menu-item-text" data-en="Toasted monster burrito packed with birria, cheese, onions, cilantro & double salsas." data-es="Burrito gigante tostado relleno de birria, queso, cebolla, cilantro y dos salsas.">
+              Toasted monster burrito packed with birria, cheese, onions, cilantro & double salsas.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('burrito', -1)">-</button>
+                <span class="qty-val" id="qty-burrito">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('burrito', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('burrito', 'El Gigante Burrito', 12.50, 'qty-burrito', '739040465_1620605946068267_1212466393966597742_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="menu-item-row" data-category="drinks" id="item-aguas">
+          <div class="menu-item-img-container">
+            <img src="738335441_1925941495459816_7700028097321800809_n.jpg" alt="Loaded Aguas Frescas">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="Loaded Aguas Frescas" data-es="Aguas Frescas Locas">Loaded Aguas Frescas</h3>
+              <span class="menu-item-price">$7.50</span>
+            </div>
+            <p class="menu-item-text" data-en="Mango or Watermelon with chamoy, Tajín, loaded with fresh diced fruit." data-es="Mango o Sandía con chamoy, Tajín, cargada con trozos de fruta picada fresca.">
+              Mango or Watermelon with chamoy, Tajín, loaded with fresh diced fruit.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('aguas', -1)">-</button>
+                <span class="qty-val" id="qty-aguas">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('aguas', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('aguas', 'Loaded Aguas Frescas', 7.50, 'qty-aguas', '738335441_1925941495459816_7700028097321800809_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="menu-item-row" data-category="birria" id="item-chilaquiles">
+          <div class="menu-item-img-container">
+            <img src="727190288_2419627958546360_2785365991798406709_n.jpg" alt="Chilaquiles Divinos">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="Chilaquiles Divinos" data-es="Chilaquiles Divinos">Chilaquiles Divinos</h3>
+              <span class="menu-item-price">$13.50</span>
+            </div>
+            <p class="menu-item-text" data-en="Red chilaquiles chips topped with shredded birria, two eggs, crema, red onions." data-es="Totopos en salsa roja coronados con birria deshebrada, dos huevos, crema y cebolla morada.">
+              Red chilaquiles chips topped with shredded birria, two eggs, crema, red onions.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('chilaquiles', -1)">-</button>
+                <span class="qty-val" id="qty-chilaquiles">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('chilaquiles', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('chilaquiles', 'Chilaquiles Divinos', 13.50, 'qty-chilaquiles', '727190288_2419627958546360_2785365991798406709_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 8: Side Consome -->
+        <div class="menu-item-row" data-category="drinks" id="item-consome">
+          <div class="menu-item-img-container">
+            <img src="727478929_2957612364580874_896667991912941432_n.jpg" alt="Side Consomé" style="filter: hue-rotate(50deg);"> <!-- Simple variant of picture -->
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-meta">
+              <h3 class="menu-item-name" data-en="Extra Consomé Cup" data-es="Vaso de Consomé Extra">Extra Consomé Cup</h3>
+              <span class="menu-item-price">$2.50</span>
+            </div>
+            <p class="menu-item-text" data-en="An extra hot, perfectly spiced beef consomé cup for dipping your tacos." data-es="Vaso extra de consomé caliente de res con especias para sopear tus tacos.">
+              An extra hot, perfectly spiced beef consomé cup for dipping your tacos.
+            </p>
+            <div class="menu-item-actions">
+              <div class="quantity-control">
+                <button class="qty-btn dec-btn" onclick="updateQty('consome', -1)">-</button>
+                <span class="qty-val" id="qty-consome">1</span>
+                <button class="qty-btn inc-btn" onclick="updateQty('consome', 1)">+</button>
+              </div>
+              <button class="btn-add-cart" onclick="addToCart('consome', 'Extra Consomé Cup', 2.50, 'qty-consome', '727478929_2957612364580874_896667991912941432_n.jpg')">
+                <i data-lucide="shopping-cart"></i>
+                <span data-en="Add" data-es="Agregar">Add</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Floating Cart Button -->
+  <button class="floating-cart-btn" id="floatingCartBtn" onclick="toggleCartDrawer()">
+    <i data-lucide="shopping-bag"></i>
+    <span class="cart-count-badge" id="cartCountBadge">0</span>
+  </button>
+
+  <!-- Cart Sidebar Drawer -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3 class="cart-title" data-en="Your Order" data-es="Tu Pedido">Your Order</h3>
+      <button class="btn-close-cart" onclick="toggleCartDrawer()">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Injected by JS -->
+      <div style="text-align:center; padding: 2rem; color: #a1a1aa;" data-en="Your cart is empty." data-es="Tu carrito está vacío.">Your cart is empty.</div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="summary-row">
+        <span data-en="Subtotal" data-es="Subtotal">Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <div class="summary-row">
+        <span data-en="Tax (8.25%)" data-es="Impuestos (8.25%)">Tax (8.25%)</span>
+        <span id="cartTax">$0.00</span>
+      </div>
+      <div class="summary-row total">
+        <span data-en="Total" data-es="Total">Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      
+      <button class="btn-checkout" onclick="openCheckoutModal()">
+        <i data-lucide="check-circle-2"></i>
+        <span data-en="Checkout & Order" data-es="Proceder a Ordenar">Checkout & Order</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Checkout Modal Overlay -->
+  <div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-box">
+      <div class="cart-header">
+        <h3 class="cart-title" data-en="Order Details" data-es="Detalles del Pedido">Order Details</h3>
+        <button class="btn-close-cart" onclick="closeCheckoutModal()">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="checkout-body">
+        
+        <div class="checkout-field">
+          <label class="checkout-label" data-en="Your Name" data-es="Tu Nombre">Your Name</label>
+          <input type="text" id="orderName" class="checkout-input" placeholder="e.g. John Doe" required>
+        </div>
+
+        <div class="checkout-field">
+          <label class="checkout-label" data-en="Your Phone Number" data-es="Tu Teléfono">Your Phone Number</label>
+          <input type="tel" id="orderPhone" class="checkout-input" placeholder="e.g. (956) 555-0199" required>
+        </div>
+
+        <div class="checkout-field">
+          <label class="checkout-label" data-en="Order Type" data-es="Tipo de Orden">Order Type</label>
+          <div class="checkout-radio-group">
+            <label class="checkout-radio-label">
+              <input type="radio" name="orderType" value="Pickup" checked>
+              <span data-en="Pickup" data-es="Recoger en Sucursal">Pickup</span>
+            </label>
+            <label class="checkout-radio-label">
+              <input type="radio" name="orderType" value="Curbside">
+              <span data-en="Curbside" data-es="Para Llevar al Carro">Curbside</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="checkout-field">
+          <label class="checkout-label" data-en="Select Location" data-es="Seleccionar Sucursal">Select Location</label>
+          <select id="orderLocation" class="checkout-input">
+            <option value="6418 S Padre Island Hwy" data-en="S Padre Island Hwy (Food Truck)" data-es="S Padre Island Hwy (Food Truck)">S Padre Island Hwy (Food Truck)</option>
+            <option value="2100 Ruben M Torres Blvd" data-en="Ruben M Torres Blvd (Express)" data-es="Ruben M Torres Blvd (Express)">Ruben M Torres Blvd (Express)</option>
+          </select>
+        </div>
+
+        <button class="btn-submit-order" onclick="submitOrderWhatsApp()">
+          <i data-lucide="music-2"></i> <!-- we can style this with WhatsApp icon or Lucide's message-circle -->
+          <i data-lucide="message-square" style="display:inline-block;"></i>
+          <span data-en="Submit via WhatsApp" data-es="Enviar por WhatsApp">Submit via WhatsApp</span>
+        </button>
+
+        <a href="tel:9566212937" class="btn-cancel-checkout" style="background-color: var(--parchment-text-dark); color: var(--white); border: none;">
+          <span data-en="Call to Place Order" data-es="Llamar para Ordenar">Call to Place Order</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <span class="logo-text">LA BANDERA<span class="text-red">BTX</span></span>
+        <p class="footer-tagline">ESTILO TIJUANA • BROWNSVILLE, TX</p>
+      </div>
+      <div class="footer-rights">
+        &copy; 2026 La Bandera BTX. <span data-en="All Rights Reserved." data-es="Todos los derechos reservados.">All Rights Reserved.</span>
+        <br>
+        <span class="developer-credit">Crafted with passion in the 956.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- GSAP Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <script>
+    // Specific Javascript for order processing & local page features
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // Load preference lang
+      const currentLang = localStorage.getItem("laBanderaLang") || "en";
+      translatePage(currentLang);
+
+      // Language Switcher Click
+      const langSwitcher = document.getElementById("langSwitcher");
+      langSwitcher.addEventListener("click", () => {
+        const nextLang = localStorage.getItem("laBanderaLang") === "en" ? "es" : "en";
+        translatePage(nextLang);
+      });
+
+      // Filter Buttons Click
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const menuRows = document.querySelectorAll(".menu-item-row");
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          // toggle active
+          filterBtns.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const filterVal = btn.getAttribute("data-filter");
+          
+          menuRows.forEach(row => {
+            if (filterVal === "all" || row.getAttribute("data-category") === filterVal) {
+              row.style.display = "flex";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Highlight selected item if passed from hero lineup URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const highlightedItem = urlParams.get('item');
+      if (highlightedItem) {
+        const targetRow = document.getElementById(`item-${highlightedItem}`);
+        if (targetRow) {
+          setTimeout(() => {
+            targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            targetRow.style.borderColor = 'var(--parchment-red)';
+            targetRow.style.boxShadow = '0 0 20px var(--red-glow)';
+            
+            // Pulse border animation
+            gsap.to(targetRow, {
+              borderColor: "var(--red)",
+              boxShadow: "0 0 25px var(--red-glow)",
+              yoyo: true,
+              repeat: 3,
+              duration: 0.5
+            });
+          }, 400);
+        }
+      }
+
+      // Sync Parchment Theme Class with Home Page Selection
+      const showParchment = localStorage.getItem("laBanderaParchment") !== "false";
+      if (!showParchment) {
+        document.body.classList.add("no-parchment");
+      }
+
+      // Cursor Setup
+      const cursor = document.getElementById("customCursor");
+      const cursorDot = document.getElementById("customCursorDot");
+      
+      document.addEventListener("mousemove", (e) => {
+        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
+        gsap.to(cursorDot, { x: e.clientX, y: e.clientY, duration: 0.02 });
+      });
+
+      const hovers = document.querySelectorAll("a, button, input, select, .qty-btn, .lang-switcher");
+      hovers.forEach(el => {
+        el.addEventListener("mouseenter", () => cursor.classList.add("hovered"));
+        el.addEventListener("mouseleave", () => cursor.classList.remove("hovered"));
+      });
+
+      // Initialize icons
+      lucide.createIcons();
+
+      // Click background of site to close cart drawer
+      document.addEventListener("click", (e) => {
+        const drawer = document.getElementById("cartDrawer");
+        const cartBtn = document.getElementById("floatingCartBtn");
+        const isAddToCart = e.target.closest(".btn-add-cart");
+        const isQtyBtn = e.target.closest(".qty-btn");
+        
+        if (drawer.classList.contains("open") && 
+            !drawer.contains(e.target) && 
+            !cartBtn.contains(e.target) && 
+            !isAddToCart && 
+            !isQtyBtn) {
+          drawer.classList.remove("open");
+        }
+      });
+
+      // Click semi-transparent overlay background to close checkout modal
+      const chkOverlay = document.getElementById("checkoutOverlay");
+      if (chkOverlay) {
+        chkOverlay.addEventListener("click", (e) => {
+          if (e.target === chkOverlay) {
+            closeCheckoutModal();
+          }
+        });
+      }
+    });
+
+    // Translation Utility for Menu page
+    function translatePage(lang) {
+      document.querySelectorAll("[data-en]").forEach(el => {
+        el.innerHTML = lang === "en" ? el.getAttribute("data-en") : el.getAttribute("data-es");
+      });
+
+      const optEn = document.getElementById("lang-en");
+      const optEs = document.getElementById("lang-es");
+      if (lang === "en") {
+        optEn.classList.add("active");
+        optEs.classList.remove("active");
+        document.body.classList.remove("lang-es");
+        document.body.classList.add("lang-en");
+      } else {
+        optEn.classList.remove("active");
+        optEs.classList.add("active");
+        document.body.classList.remove("lang-en");
+        document.body.classList.add("lang-es");
+      }
+      localStorage.setItem("laBanderaLang", lang);
+    }
+
+    // Interactive Cart System
+    let cart = [];
+
+    function updateQty(id, change) {
+      const qtySpan = document.getElementById(`qty-${id}`);
+      let currentVal = parseInt(qtySpan.textContent);
+      currentVal += change;
+      if (currentVal < 1) currentVal = 1;
+      qtySpan.textContent = currentVal;
+    }
+
+    function addToCart(id, name, price, qtyInputId, imgPath) {
+      const quantity = parseInt(document.getElementById(qtyInputId).textContent);
+      
+      // Check if item already in cart
+      const existingItem = cart.find(item => item.id === id);
+      if (existingItem) {
+        existingItem.quantity += quantity;
+      } else {
+        cart.push({
+          id,
+          name,
+          price,
+          quantity,
+          img: imgPath
+        });
+      }
+      
+      // Reset input counter back to 1
+      document.getElementById(qtyInputId).textContent = "1";
+      
+      updateCartUI();
+      
+      // Auto open cart drawer
+      const drawer = document.getElementById("cartDrawer");
+      drawer.classList.add("open");
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartList = document.getElementById("cartItemsList");
+      const cartCount = document.getElementById("cartCountBadge");
+      
+      if (cart.length === 0) {
+        const lang = localStorage.getItem("laBanderaLang") || "en";
+        cartList.innerHTML = `<div style="text-align:center; padding: 3rem 0; color: #a1a1aa;" 
+          data-en="Your cart is empty." data-es="Tu carrito está vacío.">
+          ${lang === 'en' ? 'Your cart is empty.' : 'Tu carrito está vacío.'}
+        </div>`;
+        cartCount.textContent = "0";
+        
+        document.getElementById("cartSubtotal").textContent = "$0.00";
+        document.getElementById("cartTax").textContent = "$0.00";
+        document.getElementById("cartTotal").textContent = "$0.00";
+        return;
+      }
+
+      // Render items
+      cartList.innerHTML = "";
+      let totalQty = 0;
+      let subtotal = 0;
+
+      cart.forEach(item => {
+        totalQty += item.quantity;
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        const cartItemDiv = document.createElement("div");
+        cartItemDiv.classList.add("cart-item");
+        cartItemDiv.innerHTML = `
+          <img src="${item.img}" alt="${item.name}" class="cart-item-img">
+          <div class="cart-item-info">
+            <h4 class="cart-item-name">${item.name}</h4>
+            <div class="cart-item-price-row">
+              <span class="cart-item-qty">Qty: ${item.quantity}</span>
+              <span class="cart-item-price">$${itemTotal.toFixed(2)}</span>
+            </div>
+          </div>
+          <button class="btn-remove-item" onclick="removeFromCart('${item.id}')">
+            <i data-lucide="trash-2" style="width:16px; height:16px;"></i>
+          </button>
+        `;
+        cartList.appendChild(cartItemDiv);
+      });
+
+      // Update counters
+      cartCount.textContent = totalQty;
+      
+      const taxRate = 0.0825; // 8.25% Brownsville local sales tax
+      const tax = subtotal * taxRate;
+      const total = subtotal + tax;
+
+      document.getElementById("cartSubtotal").textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById("cartTax").textContent = `$${tax.toFixed(2)}`;
+      document.getElementById("cartTotal").textContent = `$${total.toFixed(2)}`;
+      
+      lucide.createIcons();
+    }
+
+    function toggleCartDrawer() {
+      const drawer = document.getElementById("cartDrawer");
+      drawer.classList.toggle("open");
+    }
+
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        alert("Please add items to your cart first!");
+        return;
+      }
+      document.getElementById("checkoutOverlay").style.display = "flex";
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById("checkoutOverlay").style.display = "none";
+    }
+
+    // Compile WhatsApp ordering message
+    function submitOrderWhatsApp() {
+      const name = document.getElementById("orderName").value.trim();
+      const phone = document.getElementById("orderPhone").value.trim();
+      const type = document.querySelector('input[name="orderType"]:checked').value;
+      const location = document.getElementById("orderLocation").value;
+
+      if (!name || !phone) {
+        alert("Please fill out your Name and Phone Number to place your order!");
+        return;
+      }
+
+      let subtotal = 0;
+      let orderText = `*LA BANDERA BTX — NEW ONLINE ORDER*\n`;
+      orderText += `-----------------------------\n`;
+      orderText += `*Customer:* ${name}\n`;
+      orderText += `*Phone:* ${phone}\n`;
+      orderText += `*Type:* ${type}\n`;
+      orderText += `*Pickup Location:* ${location}\n`;
+      orderText += `-----------------------------\n`;
+      orderText += `*ITEMS:* \n`;
+
+      cart.forEach(item => {
+        const itemCost = item.price * item.quantity;
+        subtotal += itemCost;
+        orderText += `• ${item.quantity}x ${item.name} ($${itemCost.toFixed(2)})\n`;
+      });
+
+      const tax = subtotal * 0.0825;
+      const total = subtotal + tax;
+
+      orderText += `-----------------------------\n`;
+      orderText += `*Subtotal:* $${subtotal.toFixed(2)}\n`;
+      orderText += `*Tax (8.25%):* $${tax.toFixed(2)}\n`;
+      orderText += `*TOTAL:* $${total.toFixed(2)}\n`;
+      orderText += `-----------------------------\n`;
+      orderText += `Please reply to confirm pickup time! ¡Gracias! 🚩`;
+
+      // URL encode the message and direct to restaurant phone
+      const encodedMsg = encodeURIComponent(orderText);
+      const whatsAppLink = `https://wa.me/19566212937?text=${encodedMsg}`;
+      
+      // Open in new window
+      window.open(whatsAppLink, '_blank');
+      
+      // Empty the cart and close modals
+      cart = [];
+      updateCartUI();
+      closeCheckoutModal();
+      toggleCartDrawer();
+      
+      alert("Redirecting to WhatsApp to send your order! Make sure you hit send to place it.");
+    }
+  </script>
+</body>
+</html>
