@@ -89,7 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
   mobileMenuTrigger.addEventListener("click", () => {
     mobileMenuTrigger.classList.toggle("active");
     mobileNavMenu.classList.toggle("open");
-    
+    document.body.classList.toggle("mobile-nav-open", mobileNavMenu.classList.contains("open"));
+    mobileMenuTrigger.setAttribute("aria-expanded", mobileNavMenu.classList.contains("open"));
+
     // Animate hamburger lines
     const spans = mobileMenuTrigger.querySelectorAll("span");
     if (mobileMenuTrigger.classList.contains("active")) {
@@ -108,6 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", () => {
       mobileMenuTrigger.classList.remove("active");
       mobileNavMenu.classList.remove("open");
+      document.body.classList.remove("mobile-nav-open");
+      mobileMenuTrigger.setAttribute("aria-expanded", "false");
       mobileMenuTrigger.querySelectorAll("span").forEach(s => s.style.transform = "none");
       mobileMenuTrigger.querySelector("span:nth-child(2)").style.opacity = "1";
     });
@@ -213,10 +217,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Initialize and handle resize
+  // Mobile browsers fire resize when the address bar shows/hides; only rebuild when the width changes
   initHorizontalScroll();
+  let lastWidth = window.innerWidth;
+  let resizeTimer;
   window.addEventListener("resize", () => {
-    initHorizontalScroll();
-    ScrollTrigger.refresh();
+    if (window.innerWidth === lastWidth) return;
+    lastWidth = window.innerWidth;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      initHorizontalScroll();
+      ScrollTrigger.refresh();
+
+      // Close the mobile menu if the screen grows into the desktop layout
+      if (window.innerWidth >= 1024 && mobileNavMenu.classList.contains("open")) {
+        mobileNavLinks[0].click();
+      }
+    }, 150);
   });
 
   // Navbar background change on scroll
