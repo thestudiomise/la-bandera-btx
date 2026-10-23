@@ -139,15 +139,6 @@
       gap: 2.5rem;
     }
 
-    @media (max-width: 768px) {
-      .menu-grid-list {
-        grid-template-columns: 1fr;
-      }
-      .menu-page-title {
-        font-size: 2.75rem;
-      }
-    }
-
     .menu-item-row {
       background-color: var(--white);
       border: 1px solid rgba(24, 24, 27, 0.08);
@@ -190,6 +181,7 @@
     .menu-item-details {
       padding: 1.5rem;
       flex-grow: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -679,6 +671,161 @@
       border-color: rgba(255,255,255,0.2);
       color: var(--white);
     }
+
+    /* Menu page responsive layout */
+    .menu-page-title {
+      font-size: clamp(2.4rem, 9vw, 4rem);
+    }
+
+    .menu-filters {
+      flex-wrap: wrap;
+    }
+
+    .menu-item-meta {
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+    }
+
+    .menu-item-actions {
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .cart-drawer {
+      height: 100dvh;
+    }
+
+    @media (max-width: 1023px) {
+      .menu-grid-list {
+        gap: 1.5rem;
+      }
+
+      .menu-item-img-container {
+        width: 140px;
+      }
+
+      .menu-item-details {
+        padding: 1.25rem;
+      }
+
+      .menu-item-name {
+        font-size: 1.15rem;
+      }
+
+      .menu-item-price {
+        font-size: 1.15rem;
+      }
+
+      .menu-item-row:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .menu-page-sec {
+        padding: 95px 0 100px 0; /* Extra bottom space so the floating cart never covers the last item */
+      }
+
+      .menu-page-header {
+        margin-bottom: 2rem;
+      }
+
+      .menu-page-subtitle {
+        font-size: 1rem;
+      }
+
+      .menu-filters {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.78rem;
+        flex: 1 1 auto;
+      }
+
+      .menu-grid-list {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .menu-item-img-container {
+        width: 120px;
+        min-height: 0;
+        height: auto;
+      }
+
+      .menu-item-details {
+        padding: 1rem;
+      }
+
+      .menu-item-name {
+        font-size: 1.05rem;
+      }
+
+      .menu-item-price {
+        font-size: 1.05rem;
+      }
+
+      .menu-item-text {
+        font-size: 0.85rem;
+        margin-bottom: 0.85rem;
+      }
+
+      .qty-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .btn-add-cart {
+        padding: 0.6rem 1rem;
+      }
+
+      .floating-cart-btn {
+        bottom: 1.25rem;
+        right: 1.25rem;
+        bottom: calc(1.25rem + env(safe-area-inset-bottom));
+      }
+
+      .cart-drawer {
+        width: 100%;
+      }
+
+      .cart-summary {
+        padding: 1.25rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom)) 1.25rem;
+      }
+
+      .checkout-overlay {
+        padding: 1rem 0.75rem;
+      }
+
+      .checkout-body {
+        padding: 1.25rem;
+      }
+
+      /* 16px inputs stop iPhones from auto-zooming the page when a field is tapped */
+      .checkout-input {
+        font-size: 16px;
+      }
+
+      .checkout-radio-group {
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      /* Stack photo above the details on narrow phones so text has room */
+      .menu-item-row {
+        flex-direction: column;
+      }
+
+      .menu-item-img-container {
+        width: 100%;
+        height: 190px;
+      }
+    }
   </style>
 </head>
 <body class="lang-en">
@@ -710,9 +857,26 @@
         </div>
 
         <a href="https://www.google.com/maps/place/La+Bandera+BTX/@25.9501411,-97.4876249,17z/data=!3m2!4b1!5s0x866f9686ea229681:0x792176a7834b5847!4m6!3m5!1s0x866f972240ea84e7:0x37df80e17172181e!8m2!3d25.9501363!4d-97.48505!16s%2Fg%2F11vzp927sy?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-cta" data-en="Visit Us" data-es="Visítanos">Visit Us</a>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Toggle Mobile Menu" aria-expanded="false" aria-controls="mobileNavMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav" id="mobileNavMenu">
+    <div class="mobile-nav-links">
+      <a href="index.html#about" class="mobile-nav-item" data-en="Our Story" data-es="La Historia">Our Story</a>
+      <a href="index.html#menu" class="mobile-nav-item" data-en="The Lineup" data-es="El Menu">The Lineup</a>
+      <a href="menu.html" class="mobile-nav-item" data-en="Menu" data-es="Menú">Menu</a>
+      <a href="https://www.google.com/maps/place/La+Bandera+BTX/@25.9501411,-97.4876249,17z/data=!3m2!4b1!5s0x866f9686ea229681:0x792176a7834b5847!4m6!3m5!1s0x866f972240ea84e7:0x37df80e17172181e!8m2!3d25.9501363!4d-97.48505!16s%2Fg%2F11vzp927sy?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="mobile-btn-cta" data-en="Visit Us" data-es="Visítanos">Visit Us</a>
+    </div>
+  </div>
 
   <!-- Menu Section -->
   <main class="menu-page-sec">
@@ -1088,6 +1252,35 @@
       langSwitcher.addEventListener("click", () => {
         const nextLang = localStorage.getItem("laBanderaLang") === "en" ? "es" : "en";
         translatePage(nextLang);
+      });
+
+      // Mobile Menu Overlay
+      const mobileMenuTrigger = document.getElementById("mobileMenuTrigger");
+      const mobileNavMenu = document.getElementById("mobileNavMenu");
+      const menuSpans = mobileMenuTrigger.querySelectorAll("span");
+
+      function setMobileNav(open) {
+        mobileMenuTrigger.classList.toggle("active", open);
+        mobileNavMenu.classList.toggle("open", open);
+        document.body.classList.toggle("mobile-nav-open", open);
+        mobileMenuTrigger.setAttribute("aria-expanded", open);
+        menuSpans[0].style.transform = open ? "rotate(45deg) translate(5px, 5px)" : "none";
+        menuSpans[1].style.opacity = open ? "0" : "1";
+        menuSpans[2].style.transform = open ? "rotate(-45deg) translate(6px, -6px)" : "none";
+      }
+
+      mobileMenuTrigger.addEventListener("click", () => {
+        setMobileNav(!mobileNavMenu.classList.contains("open"));
+      });
+
+      document.querySelectorAll(".mobile-nav-item, .mobile-btn-cta").forEach(link => {
+        link.addEventListener("click", () => setMobileNav(false));
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 1024 && mobileNavMenu.classList.contains("open")) {
+          setMobileNav(false);
+        }
       });
 
       // Filter Buttons Click
